@@ -1,14 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lab4p2_emiliocantarero_12111141;
 
-/**
- *
- * @author Emilio Cantarero
- */
+
 public class Bomba {
+    private float daño=150;
+    private final String nombre="Bomba";
+
+    public Bomba() {
+    }
+
+    public float getDaño() {
+        return daño;
+    }
+
+    public void setDaño(float daño) {
+        this.daño = daño;
+    }
+
+    @Override
+    public String toString() {
+        return "Bomba{" + "da\u00f1o=" + daño + ", nombre=" + nombre + '}';
+    }
+    
     
 }
