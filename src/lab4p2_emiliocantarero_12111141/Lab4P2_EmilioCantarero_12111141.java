@@ -12,41 +12,45 @@ static ArrayList<ZonaConquistada> zonas=new ArrayList();
         escuadrones.add(new Escuadron("Alfa"));
         escuadrones.get(0).getZonas().add(new ZonaConquistada("Paris", 150, 75, 80));
         escuadrones.get(0).getSoldados().add(new iLigera("Juan", "Soldado Raso", 30, 5, 125));
-        escuadrones.get(0).getSoldados().add(new Capitan("Ramiro", "Teniente", 34, 7, 150));
+        escuadrones.get(0).getSoldados().add(new iLigera("Ramiro", "Teniente", 34, 7, 150));
         escuadrones.get(0).getSoldados().add(new Sargento("Pedro", "Teniente", 28, 8, 175));
         
         escuadrones.add(new Escuadron("Bravo"));
         escuadrones.get(1).getZonas().add(new ZonaConquistada("Roma", 200, 79, 23));
-        escuadrones.get(1).getSoldados().add(new iLigera("Paco", "Soldado Raso", 21, 2, 1));
+        escuadrones.get(1).getSoldados().add(new iLigera("Paco", "Soldado Raso", 21, 2, 100));
         escuadrones.get(1).getSoldados().add(new Capitan("Alexa", "Capitan", 31, 10, 200));
         escuadrones.get(1).getSoldados().add(new Sargento("Sebastian", "Cabo", 28, 5, 150));
         
         
-        int opcion=1;
-        while (opcion!=0){
-            opcion=menu();
-            
-            if (opcion==1){
-                crearZona();
-            }else if (opcion==2){
-                listarZonas();
-            }else if(opcion==3){
-                crearEscuadron();
-            }else if(opcion==4){
-                listarEscuadrones();
-            }else if(opcion==5){
-                eliminarEscuadron();
-            }else if(opcion==6){
-                añadirSoldado();
-            }else if(opcion==7){
-                listarSoldados();
-            }else if(opcion==8){
-                listarSoldadosTipo();
-            }else if(opcion==9){
-                eliminarSoldado();
-            }else if(opcion==10){
-                pelea();
+        int opcion=20;
+        while (opcion != 0) {
+            try {
+                opcion = menu();
+                if (opcion == 1) {
+                    crearZona();
+                } else if (opcion == 2) {
+                    listarZonas();
+                } else if (opcion == 3) {
+                    crearEscuadron();
+                } else if (opcion == 4) {
+                    listarEscuadrones();
+                } else if (opcion == 5) {
+                    eliminarEscuadron();
+                } else if (opcion == 6) {
+                    añadirSoldado();
+                } else if (opcion == 7) {
+                    listarSoldados();
+                } else if (opcion == 8) {
+                    listarSoldadosTipo();
+                } else if (opcion == 9) {
+                    eliminarSoldado();
+                } else if (opcion == 10) {
+                    pelea();
+                }
+            } catch (Exception NumberFormatException) {
+                JOptionPane.showMessageDialog(null, "Entrada no valida");
             }
+
         }
         
         
@@ -174,18 +178,36 @@ static ArrayList<ZonaConquistada> zonas=new ArrayList();
             for (int i = 0; i < escuadrones.get(opc).getSoldados().size(); i++) {
                 if (escuadrones.get(opc).getSoldados().get(i) instanceof iLigera){
                     salida=salida+escuadrones.get(opc).getSoldados().get(i) + "\n";
-                }else if(escuadrones.get(opc).getSoldados().get(i) instanceof IPesada){
-                    salida=salida+escuadrones.get(opc).getSoldados().get(i)+ "\n";
-                }else if(escuadrones.get(opc).getSoldados().get(i) instanceof Sargento){
-                    salida=salida+escuadrones.get(opc).getSoldados().get(i)+ "\n";
-                }else if(escuadrones.get(opc).getSoldados().get(i) instanceof Capitan){
-                    salida=salida+escuadrones.get(opc).getSoldados().get(i)+ "\n";
-                }else if(escuadrones.get(opc).getSoldados().get(i) instanceof SuperSoldado){
+                }
+            }
+        }else if (tipo==2){    
+            for (int i = 0; i < escuadrones.get(opc).getSoldados().size(); i++) {
+                if(escuadrones.get(opc).getSoldados().get(i) instanceof IPesada){
                     salida=salida+escuadrones.get(opc).getSoldados().get(i)+ "\n";
                 }
             }
-            JOptionPane.showMessageDialog(null, salida);
+        }else if(tipo==3){   
+            for (int i = 0; i < escuadrones.get(opc).getSoldados().size(); i++) {
+                if(escuadrones.get(opc).getSoldados().get(i) instanceof Sargento){
+                    salida=salida+escuadrones.get(opc).getSoldados().get(i)+ "\n";
+                }
+            }
+        }else if(tipo==4){
+            for (int i = 0; i < escuadrones.get(opc).getSoldados().size(); i++) {
+                if(escuadrones.get(opc).getSoldados().get(i) instanceof Capitan){
+                    salida=salida+escuadrones.get(opc).getSoldados().get(i)+ "\n";
+                }
+            }
+        }else if(tipo==5){
+            for (int i = 0; i < escuadrones.get(opc).getSoldados().size(); i++) {
+                if(escuadrones.get(opc).getSoldados().get(i) instanceof SuperSoldado){
+                    salida=salida+escuadrones.get(opc).getSoldados().get(i)+ "\n";
+                    
+                }
+            }
         }
+            JOptionPane.showMessageDialog(null, salida);
+        
     }
     static void eliminarSoldado(){
         int opc=Integer.parseInt(JOptionPane.showInputDialog

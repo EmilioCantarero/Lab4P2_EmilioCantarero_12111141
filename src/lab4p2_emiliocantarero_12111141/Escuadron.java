@@ -40,7 +40,7 @@ public class Escuadron {
 
     @Override
     public String toString() {
-        return "Escuadron: "+ nombre + "\n";
+        return "Escuadron: "+ nombre + ", zona: " + zonas.get(0).getNombre() + "\n";
                 
     }
     
