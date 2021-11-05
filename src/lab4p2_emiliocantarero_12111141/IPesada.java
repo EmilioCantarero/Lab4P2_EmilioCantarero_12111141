@@ -21,10 +21,6 @@ public class IPesada extends Soldado{
         this.b = b;
     }
 
-    @Override
-    public String toString() {
-        return super.toString()+"IPesada{" + "b=" + b + '}';
-    }
 
     @Override
     public float ataque() {

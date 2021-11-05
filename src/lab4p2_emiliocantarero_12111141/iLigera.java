@@ -21,10 +21,7 @@ public class iLigera extends Soldado{
         this.a = a;
     }
 
-    @Override
-    public String toString() {
-        return super.toString()+"iLigera{" + "a=" + a + '}';
-    }
+
 
     @Override
     public float ataque() {

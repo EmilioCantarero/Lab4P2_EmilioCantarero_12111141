@@ -52,11 +52,6 @@ public class SuperSoldado extends Soldado{
     }
 
     @Override
-    public String toString() {
-        return super.toString()+"SuperSoldado{" + "a=" + a + ", b=" + b + ", e=" + e + ", l=" + l + '}';
-    }
-
-    @Override
     public float ataque() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

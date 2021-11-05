@@ -6,8 +6,49 @@ import javax.swing.JOptionPane;
 
 public class Lab4P2_EmilioCantarero_12111141 {
 static ArrayList<Escuadron> escuadrones = new ArrayList();
- 
+static ArrayList<ZonaConquistada> zonas=new ArrayList();
     public static void main(String[] args) {
+        
+        escuadrones.add(new Escuadron("Alfa"));
+        escuadrones.get(0).getZonas().add(new ZonaConquistada("Paris", 150, 75, 80));
+        escuadrones.get(0).getSoldados().add(new iLigera("Juan", "Soldado Raso", 30, 5, 125));
+        escuadrones.get(0).getSoldados().add(new Capitan("Ramiro", "Teniente", 34, 7, 150));
+        escuadrones.get(0).getSoldados().add(new Sargento("Pedro", "Teniente", 28, 8, 175));
+        
+        escuadrones.add(new Escuadron("Bravo"));
+        escuadrones.get(1).getZonas().add(new ZonaConquistada("Roma", 200, 79, 23));
+        escuadrones.get(1).getSoldados().add(new iLigera("Paco", "Soldado Raso", 21, 2, 1));
+        escuadrones.get(1).getSoldados().add(new Capitan("Alexa", "Capitan", 31, 10, 200));
+        escuadrones.get(1).getSoldados().add(new Sargento("Sebastian", "Cabo", 28, 5, 150));
+        
+        
+        int opcion=1;
+        while (opcion!=0){
+            opcion=menu();
+            
+            if (opcion==1){
+                crearZona();
+            }else if (opcion==2){
+                listarZonas();
+            }else if(opcion==3){
+                crearEscuadron();
+            }else if(opcion==4){
+                listarEscuadrones();
+            }else if(opcion==5){
+                eliminarEscuadron();
+            }else if(opcion==6){
+                añadirSoldado();
+            }else if(opcion==7){
+                listarSoldados();
+            }else if(opcion==8){
+                listarSoldadosTipo();
+            }else if(opcion==9){
+                eliminarSoldado();
+            }else if(opcion==10){
+                pelea();
+            }
+        }
+        
         
     }
     
@@ -35,7 +76,7 @@ static ArrayList<Escuadron> escuadrones = new ArrayList();
         t=Integer.parseInt(JOptionPane.showInputDialog("Tamano"));
         x=Integer.parseInt(JOptionPane.showInputDialog("Coordenada en X"));
         y=Integer.parseInt(JOptionPane.showInputDialog("Coordenada en Y"));
-        
+        zonas.add(new ZonaConquistada(n, t, x, y));
     }
     static void listarZonas(){
         String salida="";
@@ -49,6 +90,12 @@ static ArrayList<Escuadron> escuadrones = new ArrayList();
         String n;
         n=JOptionPane.showInputDialog("Nombre del escuadron");
         escuadrones.add(new Escuadron(n));
+        escuadrones.get(escuadrones.size()-1).getZonas().add(asignarZona());
+    }
+    
+    static ZonaConquistada asignarZona(){
+        int opc=Integer.parseInt(JOptionPane.showInputDialog("Asigne una zona a este escuadron"));
+        return zonas.get(opc);
     }
     static void listarEscuadrones(){
         String salida="";
@@ -159,10 +206,16 @@ static ArrayList<Escuadron> escuadrones = new ArrayList();
         JOptionPane.showMessageDialog(null,"Elija ahora el soldado que luchara primero");
         int s1=Integer.parseInt(JOptionPane.showInputDialog("Soldado escuadron 1"));
         int s2=Integer.parseInt(JOptionPane.showInputDialog("Soldado escuadron 2"));
+        
+        atacar(e1, e2, s1, s2);
 
     }
-    static void ataque(){
-        
+    static void atacar(int e1, int e2, int s1, int s2){
+        while (escuadrones.get(e1).getSoldados().get(s1).getVida()!=0 || escuadrones.get(e2).getSoldados().get(s2).getVida()!=0){
+            JOptionPane.showMessageDialog(null, "El" + escuadrones.get(e1).getSoldados().get(s1).getRango() + 
+                    "ataco al "+ escuadrones.get(e2).getSoldados().get(s2).getRango()+ escuadrones.get(e1).getSoldados().get(s1).getNombre() + " haciendole" +
+                    escuadrones.get(e1).getSoldados().get(s1).ataque() + " puntos de daño");
+        }
     }
     
 }

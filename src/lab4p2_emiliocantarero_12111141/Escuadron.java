@@ -40,7 +40,8 @@ public class Escuadron {
 
     @Override
     public String toString() {
-        return "Escuadron{" + "nombre=" + nombre + ", soldados=" + soldados + ", zonas=" + zonas + '}';
+        return "Escuadron: "+ nombre + "\n";
+                
     }
     
     

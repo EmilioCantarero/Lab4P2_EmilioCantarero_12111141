@@ -21,10 +21,6 @@ public class Capitan extends Soldado{
         this.l = l;
     }
 
-    @Override
-    public String toString() {
-        return super.toString()+"Capitan{" + "l=" + l + '}';
-    }
 
     @Override
     public float ataque() {

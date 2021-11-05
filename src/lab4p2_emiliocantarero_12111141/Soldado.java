@@ -59,7 +59,7 @@ public abstract class Soldado {
 
     @Override
     public String toString() {
-        return "Soldado{" + "nombre=" + nombre + ", rango=" + rango + ", edad=" + edad + ", tiempo=" + tiempo + ", vida=" + vida + '}';
+        return rango +" "+ nombre + ", edad: " + edad + " años" + ", vida: " + vida + "\n";
     }
     
     public abstract float ataque();
