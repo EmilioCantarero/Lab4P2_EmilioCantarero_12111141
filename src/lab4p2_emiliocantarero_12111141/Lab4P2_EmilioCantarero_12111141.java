@@ -242,7 +242,6 @@ static ArrayList<ZonaConquistada> zonas=new ArrayList();
                     escuadrones.get(e1).getSoldados().get(s1).ataque(escuadrones.get(e2).getSoldados().get(s2)) + " puntos de daño");
             
             escuadrones.get(e2).getSoldados().get(s2).setVida(escuadrones.get(e2).getSoldados().get(s2).getVida()-escuadrones.get(e1).getSoldados().get(s1).ataque(escuadrones.get(e2).getSoldados().get(s2)));
-            JOptionPane.showMessageDialog(null,escuadrones.get(e2).getSoldados().get(s2).getVida() );
             
             if (escuadrones.get(e2).getSoldados().get(s2).getVida() <= 0) {
                 JOptionPane.showMessageDialog(null, "El " + escuadrones.get(e2).getSoldados().get(s2).getRango()
@@ -311,8 +310,13 @@ static ArrayList<ZonaConquistada> zonas=new ArrayList();
             JOptionPane.showMessageDialog(null, "El escuadron" + " " +  escuadrones.get(e2).getNombre() + " ha sido aniquilado");
             escuadrones.remove(e2);
                 JOptionPane.showMessageDialog(null, "Mantienes la zona en disputa");
+                
 
         }
+    }
+    
+    static void restaurarVida(ArrayList<Soldado> soldados, Escuadron e1){
+        
     }
     
 }

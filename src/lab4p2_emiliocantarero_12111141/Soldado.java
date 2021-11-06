@@ -5,7 +5,6 @@ public abstract class Soldado {
     private String nombre, rango;
     private int edad, tiempo;
     private double vida;
-
     public Soldado() {
     }
 
@@ -61,6 +60,8 @@ public abstract class Soldado {
     public String toString() {
         return rango +" "+ nombre + ", edad: " + edad + " años" + ", vida: " + vida + "\n";
     }
+    
+  
     
     public abstract double ataque(Soldado rival);
     
