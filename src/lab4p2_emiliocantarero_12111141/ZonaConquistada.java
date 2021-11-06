@@ -49,7 +49,7 @@ public class ZonaConquistada {
 
     @Override
     public String toString() {
-        return nombre + " " + ", "+ "Tamano: " + tam + ", " + "Coordenadas: "+ cX + ", " + cY;
+        return nombre + " " + ", "+ "Tamano: " + tam + ", " + "Coordenadas: "+ cX + ", " + cY + "\n";
     }
     
     

@@ -8,7 +8,7 @@ public class iLigera extends Soldado{
         super();
     }
 
-    public iLigera(String nombre, String rango, int edad, int tiempo, float vida) {
+    public iLigera(String nombre, String rango, int edad, int tiempo, double vida) {
         super(nombre, rango, edad, tiempo, vida);
         this.a=new ArmaBlanca();
     }
@@ -24,8 +24,8 @@ public class iLigera extends Soldado{
 
 
     @Override
-    public float ataque() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double ataque(Soldado rival) {
+        return daño;
     }
 
 

@@ -233,10 +233,85 @@ static ArrayList<ZonaConquistada> zonas=new ArrayList();
 
     }
     static void atacar(int e1, int e2, int s1, int s2){
-        while (escuadrones.get(e1).getSoldados().get(s1).getVida()!=0 || escuadrones.get(e2).getSoldados().get(s2).getVida()!=0){
-            JOptionPane.showMessageDialog(null, "El" + escuadrones.get(e1).getSoldados().get(s1).getRango() + 
-                    "ataco al "+ escuadrones.get(e2).getSoldados().get(s2).getRango()+ escuadrones.get(e1).getSoldados().get(s1).getNombre() + " haciendole" +
-                    escuadrones.get(e1).getSoldados().get(s1).ataque() + " puntos de daño");
+        while (escuadrones.get(e1).getSoldados().size()>0 && escuadrones.get(e2).getSoldados().size()>0){
+            
+            JOptionPane.showMessageDialog(null, "El " + escuadrones.get(e1).getSoldados().get(s1).getRango() 
+                    + " " + escuadrones.get(e1).getSoldados().get(s1).getNombre() +
+                    " ataco al "+ escuadrones.get(e2).getSoldados().get(s2).getRango()+ " "+
+                    escuadrones.get(e2).getSoldados().get(s2).getNombre() + " haciendole " +
+                    escuadrones.get(e1).getSoldados().get(s1).ataque(escuadrones.get(e2).getSoldados().get(s2)) + " puntos de daño");
+            
+            escuadrones.get(e2).getSoldados().get(s2).setVida(escuadrones.get(e2).getSoldados().get(s2).getVida()-escuadrones.get(e1).getSoldados().get(s1).ataque(escuadrones.get(e2).getSoldados().get(s2)));
+            JOptionPane.showMessageDialog(null,escuadrones.get(e2).getSoldados().get(s2).getVida() );
+            
+            if (escuadrones.get(e2).getSoldados().get(s2).getVida() <= 0) {
+                JOptionPane.showMessageDialog(null, "El " + escuadrones.get(e2).getSoldados().get(s2).getRango()
+                        + " " + escuadrones.get(e2).getSoldados().get(s2).getNombre() + " ha muerto");
+                escuadrones.get(e2).getSoldados().remove(s2);
+                if (escuadrones.get(e2).getSoldados().size() > 0) {
+                    int opcion = Integer.parseInt(JOptionPane.showInputDialog("Que desea hacer\n"
+                            + "1- Enviar otro soldado\n"
+                            + "2- Huir"));
+
+                    if (opcion == 1) {
+
+                        JOptionPane.showMessageDialog(null, "El siguiente soldado llega al campo de combate");
+                        s2 = 0;
+                    } else if (opcion == 2) {
+                        JOptionPane.showMessageDialog(null, "Has huido, la zona que disputabas se mantiene en manos de tu rival");
+                        escuadrones.get(e1).getZonas().add(escuadrones.get(e2).getZonas().get(0));
+                        escuadrones.get(e2).getZonas().remove(0);
+                        break;
+                    } 
+                }
+            }
+            
+            
+          JOptionPane.showMessageDialog(null, "El " + escuadrones.get(e2).getSoldados().get(s2).getRango() 
+                    + " " + escuadrones.get(e2).getSoldados().get(s2).getNombre() +
+                    " ataco al "+ escuadrones.get(e1).getSoldados().get(s1).getRango()+ " "+
+                    escuadrones.get(e1).getSoldados().get(s1).getNombre() + " haciendole " +
+                    escuadrones.get(e2).getSoldados().get(s2).ataque(escuadrones.get(e1).getSoldados().get(s1)) + " puntos de daño");
+            
+            escuadrones.get(e1).getSoldados().get(s1).setVida(escuadrones.get(e1).getSoldados().get(s1).getVida()-escuadrones.get(e2).getSoldados().get(s2).ataque(escuadrones.get(e1).getSoldados().get(s1)));  
+            if (escuadrones.get(e1).getSoldados().get(s1).getVida() <= 0) {
+                JOptionPane.showMessageDialog(null, "El " + escuadrones.get(e1).getSoldados().get(s1).getRango()
+                        + " " + escuadrones.get(e1).getSoldados().get(s1).getNombre() + " ha muerto");
+                escuadrones.get(e1).getSoldados().remove(s1);
+                if (escuadrones.get(e1).getSoldados().size() > 0) {
+                    int opcion = Integer.parseInt(JOptionPane.showInputDialog("Que desea hacer\n"
+                            + "1- Enviar otro soldado\n"
+                            + "2- Huir"));
+
+                    if (opcion == 1) {
+
+                        JOptionPane.showMessageDialog(null, "El siguiente soldado llega al campo de combate");
+                        s1 = 0;
+                    } else if (opcion == 2) {
+                        JOptionPane.showMessageDialog(null, "Has huido, la zona en disputa pasa a manos de tu rival");
+                        escuadrones.get(e2).getZonas().add(escuadrones.get(e1).getZonas().get(0));
+                        escuadrones.get(e1).getZonas().remove(0);
+                        break;
+                    } 
+                }
+            }
+            
+            
+            }
+        if (escuadrones.get(e1).getSoldados().isEmpty()){
+                JOptionPane.showMessageDialog(null, "El escuadron" + " " + escuadrones.get(e1).getNombre() + " ha sido aniquilado");
+                
+                JOptionPane.showMessageDialog(null, "La zona que controlaban pasa a manos del escuadron " + escuadrones.get(e2).getNombre());
+                escuadrones.get(e2).getZonas().add(escuadrones.get(e1).getZonas().get(0));
+                escuadrones.get(e1).getZonas().remove(0);
+                escuadrones.remove(e1);
+                
+            
+        }else if(escuadrones.get(e2).getSoldados().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El escuadron" + " " +  escuadrones.get(e2).getNombre() + " ha sido aniquilado");
+            escuadrones.remove(e2);
+                JOptionPane.showMessageDialog(null, "Mantienes la zona en disputa");
+
         }
     }
     

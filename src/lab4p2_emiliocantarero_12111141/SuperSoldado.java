@@ -6,7 +6,8 @@ public class SuperSoldado extends Soldado{
     private Bomba b;
     private Escopeta e;
     private Lanzallamas l;
-
+    
+    
     public SuperSoldado() {
         super();
     }
@@ -52,8 +53,8 @@ public class SuperSoldado extends Soldado{
     }
 
     @Override
-    public float ataque() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double ataque(Soldado rival) {
+        return 0;
     }
 
 

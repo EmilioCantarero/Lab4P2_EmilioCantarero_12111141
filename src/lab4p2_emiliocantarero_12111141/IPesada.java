@@ -3,7 +3,7 @@ package lab4p2_emiliocantarero_12111141;
 
 public class IPesada extends Soldado{
     private Bomba b;
-
+    private double daño=150;
     public IPesada() {
         super();
     }
@@ -22,9 +22,14 @@ public class IPesada extends Soldado{
     }
 
 
+
+
     @Override
-    public float ataque() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double ataque(Soldado rival) {
+        if (rival instanceof iLigera){
+            return daño*1.05;
+        }
+        return daño;
     }
 
 

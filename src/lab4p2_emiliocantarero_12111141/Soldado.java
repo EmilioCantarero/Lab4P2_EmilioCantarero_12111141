@@ -4,12 +4,12 @@ package lab4p2_emiliocantarero_12111141;
 public abstract class Soldado {
     private String nombre, rango;
     private int edad, tiempo;
-    private float vida;
+    private double vida;
 
     public Soldado() {
     }
 
-    public Soldado(String nombre, String rango, int edad, int tiempo, float vida) {
+    public Soldado(String nombre, String rango, int edad, int tiempo, double vida) {
         this.nombre = nombre;
         this.rango = rango;
         this.edad = edad;
@@ -49,11 +49,11 @@ public abstract class Soldado {
         this.tiempo = tiempo;
     }
 
-    public float getVida() {
+    public double getVida() {
         return vida;
     }
 
-    public void setVida(float vida) {
+    public void setVida(double vida) {
         this.vida = vida;
     }
 
@@ -62,7 +62,7 @@ public abstract class Soldado {
         return rango +" "+ nombre + ", edad: " + edad + " años" + ", vida: " + vida + "\n";
     }
     
-    public abstract float ataque();
+    public abstract double ataque(Soldado rival);
     
     
 }
